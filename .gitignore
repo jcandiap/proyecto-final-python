@@ -1,0 +1,16 @@
+# Archivos y carpetas que se ignorarán
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+*.log
+*.swp
+
+# Entornos virtuales (pueden variar según el nombre del entorno virtual)
+venv/
+env/
+.env/
