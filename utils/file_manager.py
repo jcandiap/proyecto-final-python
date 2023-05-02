@@ -7,11 +7,11 @@ class FileManager:
     def __init__(self, file_name):
         self.file_name = file_name
         
-    def __get_base_dir():
+    def __get_base_dir(self):
         if 'COLAB_GPU' in os.environ:
             return Path(os.getcwd())
         else:
-            return Path(__file__).resolve().parent + '/db/'
+            return str(Path(__file__).resolve().parent) + '\\db\\'
             
     def save(self, object):
         try:
