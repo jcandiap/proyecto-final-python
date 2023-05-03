@@ -8,7 +8,7 @@ def cargar_accion(option_selected):
     if option_selected == 1:
         UserView.register_user()
     elif option_selected == 2:
-        None
+        UserView.login()
     elif option_selected == 3:
         UserView.list_users()
     return option_selected
