@@ -36,7 +36,7 @@ class FileManager:
             
     def get_registers(self, is_print_exception = False):
         try:
-            full_path = self.__get_base_dir() + self.file_name
+            full_path = str(self.__get_base_dir()) + '/' + self.file_name
             with open(full_path, 'r', encoding='UTF-8') as file:
                 return json.load(file)
         except Exception as e:
