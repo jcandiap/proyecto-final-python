@@ -18,7 +18,10 @@ class FileManager:
             full_path = str(self.__get_base_dir()) + '/' + self.file_name
             if os.path.exists(full_path):
                 with open(full_path, 'r', encoding='UTF-8') as file:
-                    registers = json.load(file)
+                    try:
+                        registers = json.load(file)
+                    except:
+                        registers = []
             else:
                 registers = []
             
@@ -29,7 +32,7 @@ class FileManager:
             
         except Exception as e:
             print(f'Error al abrir el archivo [{ e }]')
-            time.sleep(3)
+            time.sleep(10)
             
     def get_registers(self, is_print_exception = False):
         try:
