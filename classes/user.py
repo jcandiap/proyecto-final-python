@@ -8,6 +8,14 @@ class UserModel:
         self.last_name = last_name
         self.email = email
         self.password = password
+        
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "password": self.password
+        }
 
 class UserController:
     user_list: list[UserModel] = []
@@ -22,10 +30,10 @@ class UserController:
         
     def save_user(self, name:str, last_name:str, email:str, password:str):
         new_user = self.model(name, last_name, email, password)
-        self.file_manager.save(new_user)
+        self.file_manager.save(new_user.to_dict())
         
     def login(self, email:str, password:str) -> UserModel | None:
-        self.get_users()
+        UserController.get_users()
         for user in UserController.user_list:
             if user.email == email and user.passwod == password:
                 return user
@@ -41,7 +49,7 @@ class UserView:
             last_name =  input('Ingrese su apellido:')
             email = input('Ingrese su correo electronico:')
             password = input('Ingrese su contraseña:')
-            UserController.save_user(name, last_name, email, password)
+            UserController().save_user(name, last_name, email, password)
         except Exception as e:
             print(f'Error al registar usuario: [{ e }]')
             time.sleep(3)
