@@ -11,11 +11,11 @@ class FileManager:
         if 'COLAB_GPU' in os.environ:
             return Path(os.getcwd())
         else:
-            return str(Path(__file__).resolve().parent) + '\\db\\'
+            return Path(__file__).resolve().parent.parent / 'db'
             
     def save(self, object):
         try:
-            full_path = self.__get_base_dir() + self.file_name
+            full_path = str(self.__get_base_dir()) + '/' + self.file_name
             if os.path.exists(full_path):
                 with open(full_path, 'r', encoding='UTF-8') as file:
                     registers = json.load(file)
